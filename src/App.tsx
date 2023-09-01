@@ -1,4 +1,7 @@
-export function App() {
-  return <h1>Mistigris</h1>;
+import SignIn from "./page/SignIn";
+
+function App() {
+  return <SignIn />
 }
 
+export default App;
