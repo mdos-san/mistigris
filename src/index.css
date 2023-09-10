@@ -1,3 +1,10 @@
+:root {
+  --dashboard__padding: 80px;
+  --dashboard__element__size: 360px;
+  --dashboard__transition--window: 0.4s;
+  --dashboard__transition--content: 0.2s;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,4 +31,80 @@ img {
   background-image: url("https://site.assoconnect.com/services/storage?id=2044462&type=picture&secret=twi9KSLs7yG4hG5v0JMnsBhMpjmkHEedayWmvfMK&timestamp=1639989790");
   background-position: center;
   background-size: cover;
+}
+
+.dashboard {
+  width: calc(100% - var(--dashboard__padding) * 2);
+  height: calc(100% - var(--dashboard__padding) * 2);
+  position: relative;
+  transform: translate(-50%, -50%);
+  left :50%;
+  top: 50%;
+}
+
+.dashboard__element {
+  position: absolute;
+  border-radius: 16px;
+  box-shadow: 8px 8px 32px #ddd;
+  background-color: white;
+  transition: var(--dashboard__transition--window) all;
+  transition-delay: var(--dashboard__transition--content);
+  padding: 20px;
+  z-index: 10;
+}
+
+.dashboard__element--type-square {
+  height: var(--dashboard__element__size);
+  width: var(--dashboard__element__size);
+}
+
+.dashboard__element--type-row {
+  width: calc(100%);
+  height: calc(--dashboard__element__size);
+}
+
+.dashboard__element--position-left {
+  left: 0
+}
+
+.dashboard__element--position-middle {
+  left: calc(50% - var(--dashboard__element__size) / 2);
+}
+
+.dashboard__element--position-right {
+  left: calc(100% - var(--dashboard__element__size));
+  right: 0;
+}
+
+.dashboard__element--position-bottom {
+  bottom: 0px;
+  left: 0px;
+  top: calc(100% - var(--dashboard__element__size));
+}
+
+.dashboard__element--selected {
+  height: calc(100%);
+  left: 0px;
+  top: 0px;
+  width: calc(100%);
+  z-index: 100;
+}
+
+.dashboard__element__content,
+.dashboard__element__preview {
+  opacity: 1;
+  transition: var(--dashboard__transition--content) all;
+  transition-delay: calc(var(--dashboard__transition--content) + var(--dashboard__transition--window));
+}
+
+.dashboard__element--selected .dashboard__element__preview {
+  opacity: 0;
+}
+
+.dashboard__element--not-selected .dashboard__element__content {
+  opacity: 0;
+}
+
+.transition-delay--0 {
+  transition-delay: 0s;
 }

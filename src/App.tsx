@@ -1,7 +1,7 @@
-import SignIn from "./page/SignIn";
+import Lab from "./page/Lab";
 
 function App() {
-  return <SignIn />
+  return <Lab />
 }
 
 export default App;
