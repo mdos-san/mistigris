@@ -1,6 +1,8 @@
+import { firebaseService } from "../firebase";
+
 function SignIn() {
   return <div>
-    <button>Se connecter</button>
+    <button onClick={() => firebaseService.googleAuth()}>Se connecter</button>
   </div>
 }
 

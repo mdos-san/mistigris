@@ -1,8 +1,7 @@
-import Lab from "./page/Lab";
-import "./firebase";
+import SignIn from "./page/SignIn";
 
 function App() {
-  return <Lab />
+  return <SignIn />
 }
 
 export default App;
