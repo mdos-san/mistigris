@@ -35,7 +35,7 @@ function Preview() {
        cy={radius}
        fill="transparent"
        r={innerRadius}
-       stroke="orangered"
+       stroke="hsl(145, 100%, 38%)"
        strokeWidth={strokeWidth}
        strokeDasharray={dashArray}
        strokeDashoffset={offset}
