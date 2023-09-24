@@ -12,7 +12,7 @@ function DashboardElement({ isSelected, type, title, onClick, position, preview,
   const className = `dashboard__element dashboard__element--type-${type} dashboard__element--position-${position} ${isSelected ? "dashboard__element--selected" : "dashboard__element--not-selected"}`;
 
   return <div className={className} onClick={onClick}>
-    <h3>{title}</h3>
+    <h2 className="dashboard__element__title">{title}</h2>
     <div className={`dashboard__element__preview ${isSelected ? "transition-delay--0" : ""}`}>
       { preview }
     </div>
