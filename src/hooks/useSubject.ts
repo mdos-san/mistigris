@@ -5,9 +5,13 @@ function useSubject<T>(subject: Subject<T>, defaultValue: T) {
   const [value, setValue] = useState<T>(defaultValue);
 
   useEffect(() => {
-    subject.subscribe({
+    const subscription = subject.subscribe({
       next: (v) => setValue(v),
     });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   return value;
