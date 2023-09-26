@@ -8,9 +8,19 @@ interface Props {
 }
 
 function FamilyCard({ isSelected }: Props) {
-  return <DashboardElement title="Familles" type="square" position="left" isSelected={isSelected} onClick={function(): void {
-    DashboardCardSelector.set("family")
-  }} preview={<Preview />} content={<Content />} />
+  return (
+    <DashboardElement
+      title="Familles"
+      type="square"
+      position="left"
+      isSelected={isSelected}
+      onClick={function (): void {
+        DashboardCardSelector.set("family");
+      }}
+      preview={<Preview />}
+      content={<Content />}
+    />
+  );
 }
 
 export default FamilyCard;

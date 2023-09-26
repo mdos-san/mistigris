@@ -6,9 +6,9 @@ function useSubject<T>(subject: Subject<T>, defaultValue: T) {
 
   useEffect(() => {
     subject.subscribe({
-      next: v => setValue(v),
-    })
-  }, [])
+      next: (v) => setValue(v),
+    });
+  }, []);
 
   return value;
 }

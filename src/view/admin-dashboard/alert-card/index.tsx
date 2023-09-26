@@ -8,9 +8,19 @@ interface Props {
 }
 
 function AlertCard({ isSelected }: Props) {
-  return <DashboardElement title="Alertes" type="square" position="right" isSelected={isSelected} onClick={function(): void {
-    DashboardCardSelector.set("alert");
-  }} preview={<Preview />} content={<Content />} />
+  return (
+    <DashboardElement
+      title="Alertes"
+      type="square"
+      position="right"
+      isSelected={isSelected}
+      onClick={function (): void {
+        DashboardCardSelector.set("alert");
+      }}
+      preview={<Preview />}
+      content={<Content />}
+    />
+  );
 }
 
 export default AlertCard;

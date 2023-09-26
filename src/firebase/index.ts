@@ -5,7 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
-
 const firebaseServiceFactory = () => {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
@@ -15,18 +14,19 @@ const firebaseServiceFactory = () => {
   function googleAuth() {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log({ result })
-      }).catch((error) => {
-        console.log({ error })
+        console.log({ result });
       })
+      .catch((error) => {
+        console.log({ error });
+      });
   }
 
   return {
     app,
     analytics,
     provider,
-    googleAuth
-  }
-}
+    googleAuth,
+  };
+};
 
 export const firebaseService = firebaseServiceFactory();

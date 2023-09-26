@@ -8,9 +8,19 @@ interface Props {
 }
 
 function CatCard({ isSelected }: Props) {
-  return <DashboardElement title="Chats" type="square" position="middle" isSelected={isSelected} onClick={function(): void {
-    DashboardCardSelector.set("cat")
-  }} preview={<Preview />} content={<Content />} />
+  return (
+    <DashboardElement
+      title="Chats"
+      type="square"
+      position="middle"
+      isSelected={isSelected}
+      onClick={function (): void {
+        DashboardCardSelector.set("cat");
+      }}
+      preview={<Preview />}
+      content={<Content />}
+    />
+  );
 }
 
 export default CatCard;

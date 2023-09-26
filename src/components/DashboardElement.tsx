@@ -8,18 +8,40 @@ interface DashboardElementProps {
   content: JSX.Element;
 }
 
-function DashboardElement({ isSelected, type, title, onClick, position, preview, content }: DashboardElementProps) {
-  const className = `dashboard__element dashboard__element--type-${type} dashboard__element--position-${position} ${isSelected ? "dashboard__element--selected" : "dashboard__element--not-selected"}`;
+function DashboardElement({
+  isSelected,
+  type,
+  title,
+  onClick,
+  position,
+  preview,
+  content,
+}: DashboardElementProps) {
+  const className = `dashboard__element dashboard__element--type-${type} dashboard__element--position-${position} ${
+    isSelected
+      ? "dashboard__element--selected"
+      : "dashboard__element--not-selected"
+  }`;
 
-  return <div className={className} onClick={onClick}>
-    <h2 className="dashboard__element__title">{title}</h2>
-    <div className={`dashboard__element__preview ${isSelected ? "transition-delay--0" : ""}`}>
-      { preview }
+  return (
+    <div className={className} onClick={onClick}>
+      <h2 className="dashboard__element__title">{title}</h2>
+      <div
+        className={`dashboard__element__preview ${
+          isSelected ? "transition-delay--0" : ""
+        }`}
+      >
+        {preview}
+      </div>
+      <div
+        className={`dashboard__element__content ${
+          !isSelected ? "transition-delay--0" : ""
+        }`}
+      >
+        {content}
+      </div>
     </div>
-    <div className={`dashboard__element__content ${!isSelected ? "transition-delay--0" : ""}`}>
-      { content }
-    </div>
-  </div>
+  );
 }
 
 export default DashboardElement;

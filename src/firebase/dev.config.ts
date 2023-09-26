@@ -5,6 +5,5 @@ export const firebaseConfig = {
   storageBucket: "mistigris-dev.appspot.com",
   messagingSenderId: "1081059692505",
   appId: "1:1081059692505:web:03309e91309fc8bc0ad3c8",
-  measurementId: "G-8P0T9EENGJ"
+  measurementId: "G-8P0T9EENGJ",
 };
-

@@ -6,7 +6,7 @@ function DashboardCardSelectorFactory() {
   return {
     set: (newValue: string) => value.next(newValue),
     get: () => value,
-  }
+  };
 }
 
 export default DashboardCardSelectorFactory();
