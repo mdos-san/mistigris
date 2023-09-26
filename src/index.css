@@ -1,7 +1,8 @@
 :root {
   --font-family: Arial, Helvetica, sans-serif;
   --font-color--text: hsl(145, 100%, 5%);
-  --font-color--kpi: hsl(145, 100%, 35%);
+  --color--kpi: hsl(145, 75%, 40%);
+  --color--kpi2: hsla(145, 75%, 40%, 0.4);
 
   --dashboard__padding: 80px;
   --dashboard__element__size: 360px;
@@ -169,14 +170,22 @@ img {
 }
 
 .action {
-  color: white;
-  background-color: hsl(145, 100%, 38%);
+  color: var(--color--kpi);
   width: 300px;
   height: 160px;
   padding: 16px;
   font-weight: bold;
   font-size: 24px;
   border-radius: 12px;
+  box-shadow: 4px 4px 8px #ccc;
+  border: 1px solid var(--color--kpi2);
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.action:hover {
+  box-shadow: 8px 8px 32px #ddd;
+  border: 1px solid var(--color--kpi);
 }
 
 .spacer--vertical {
@@ -212,7 +221,7 @@ img {
 
 .family-card__content input:focus {
   border: 2px solid #aaa;
-  border-color: hsl(145, 100%, 38%);
+  border-color: var(--color--kpi);
   border-radius: 12px;
 }
 
@@ -220,11 +229,20 @@ img {
   width: 100%;
   text-align: left;
   font-size: 20px;
-  background-color: hsl(145, 100%, 38%, 0.1);
-  padding: 16px 24px;
   border-radius: 16px;
+  border-spacing: 0px;
 }
 
-.family-card__content tr {
+.family-card__content td,
+.family-card__content th {
   height: 32px;
+  padding: 16px;
+}
+
+.family-card__content thead tr {
+  background-color: white;
+}
+
+.family-card__content tbody tr:nth-child(odd) {
+  background-color: hsl(145, 0%, 50%, 0.1);
 }
