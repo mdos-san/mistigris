@@ -1,13 +1,15 @@
 import DashboardElement from "../../../components/DashboardElement";
-import { useState } from "react";
 import Preview from "./preview";
 import Content from "./content";
+import DashboardCardSelector from "../../../model/DashboardCardSelector";
 
-function FamilyCard() {
-  const [isSelected, setIsSelected] = useState(false);
+interface Props {
+  isSelected: boolean;
+}
 
+function FamilyCard({ isSelected }: Props) {
   return <DashboardElement title="Familles" type="square" position="left" isSelected={isSelected} onClick={function(): void {
-    setIsSelected(!isSelected);
+    DashboardCardSelector.set("family")
   }} preview={<Preview />} content={<Content />} />
 }
 

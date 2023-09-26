@@ -1,6 +1,6 @@
 :root {
   --font-family: Arial, Helvetica, sans-serif;
-  --font-color--text:  hsl(145, 100%, 10%);
+  --font-color--text:  hsl(145, 100%, 5%);
   --font-color--kpi: hsl(145, 100%, 35%);
 
   --dashboard__padding: 80px;
@@ -90,11 +90,18 @@ img {
   z-index: 100;
 }
 
-.dashboard:has(.dashboard__element--selected:nth-child(2)) {
+.scroller {
+  height: 100%;
+  width: 0px;
+  margin-right: 0px;
+}
+
+
+.dashboard--cat {
   left: calc((var(--dashboard__element__size) + 16px) * -1);
 }
 
-.dashboard:has(.dashboard__element--selected:nth-child(3)) {
+.dashboard--alert {
   left: calc((var(--dashboard__element__size) * 2 + 16px * 2) * -1);
 }
 

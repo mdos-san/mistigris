@@ -1,13 +1,15 @@
 import DashboardElement from "../../../components/DashboardElement";
-import { useState } from "react";
 import Preview from "./preview";
 import Content from "./content";
+import DashboardCardSelector from "../../../model/DashboardCardSelector";
 
-function CatCard() {
-  const [isSelected, setIsSelected] = useState(false);
+interface Props {
+  isSelected: boolean;
+}
 
+function CatCard({ isSelected }: Props) {
   return <DashboardElement title="Chats" type="square" position="middle" isSelected={isSelected} onClick={function(): void {
-    setIsSelected(!isSelected);
+    DashboardCardSelector.set("cat")
   }} preview={<Preview />} content={<Content />} />
 }
 

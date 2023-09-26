@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { firebaseService } from "../../firebase";
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ function WelcomePage() {
     <button onClick={() => navigate("/admin")}>Admin</button>
     <button onClick={() => navigate("/family")}>Family</button>
     <button onClick={() => navigate("/forbidden")}>Forbidden</button>
+    <button onClick={() => firebaseService.googleAuth()}>Se connecter</button>
   </>
 }
 

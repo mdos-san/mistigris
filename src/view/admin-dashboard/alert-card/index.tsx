@@ -1,13 +1,15 @@
 import DashboardElement from "../../../components/DashboardElement";
-import { useState } from "react";
 import Preview from "./preview";
 import Content from "./content";
+import DashboardCardSelector from "../../../model/DashboardCardSelector";
 
-function AlertCard() {
-  const [isSelected, setIsSelected] = useState(false);
+interface Props {
+  isSelected: boolean;
+}
 
+function AlertCard({ isSelected }: Props) {
   return <DashboardElement title="Alertes" type="square" position="right" isSelected={isSelected} onClick={function(): void {
-    setIsSelected(!isSelected);
+    DashboardCardSelector.set("alert");
   }} preview={<Preview />} content={<Content />} />
 }
 
