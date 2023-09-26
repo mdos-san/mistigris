@@ -5,7 +5,6 @@ function Content() {
         <div>
           <input placeholder="Recherche..." />
         </div>
-        <div className="spacer--horizontal" />
         <div>
           <table>
             <thead>

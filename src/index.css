@@ -199,7 +199,6 @@ img {
   height: 52px;
   padding: 0 8px;
   line-height: 52px;
-  pointer-events: none;
   font-size: 24px;
   border: none;
   transition: 0.3s all;
