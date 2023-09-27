@@ -1,3 +1,5 @@
+import Close from "./Close";
+
 interface DashboardElementProps {
   title: string;
   type: "square" | "row";
@@ -26,6 +28,7 @@ function DashboardElement({
   return (
     <div className={className} onClick={onClick}>
       <h2 className="dashboard__element__title">{title}</h2>
+      <Close />
       <div
         className={`dashboard__element__preview ${
           isSelected ? "transition-delay--0" : ""
