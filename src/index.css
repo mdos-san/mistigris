@@ -246,3 +246,10 @@ img {
 .family-card__content tbody tr:nth-child(odd) {
   background-color: hsl(145, 0%, 50%, 0.1);
 }
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}

@@ -1,15 +1,17 @@
+import { X } from "react-feather";
 import DashboardCardSelector from "../model/DashboardCardSelector";
 
 function Close() {
   return (
-    <button
+    <span
+      className="close"
       onClick={(e) => {
         e.stopPropagation();
         DashboardCardSelector.set("none");
       }}
     >
-      Close
-    </button>
+      <X />
+    </span>
   );
 }
 
