@@ -1,11 +1,11 @@
 import AlertCard from "./alert-card";
 import CatCard from "./cat-card";
 import FamilyCard from "./family-card";
-import DashboardCardSelector from "../../model/DashboardCardSelector";
 import useSubject from "../../hooks/useSubject";
+import DashboardCard from "../../DashboardCard";
 
 function AdminDashboardPage() {
-  const selectedDashboardCard = useSubject(DashboardCardSelector.get(), "none");
+  const selectedDashboardCard = useSubject(DashboardCard.model.get(), "none");
 
   return (
     <div className={`dashboard dashboard--${selectedDashboardCard}`}>

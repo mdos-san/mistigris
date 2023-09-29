@@ -1,7 +1,6 @@
-import DashboardElement from "../../../components/DashboardElement";
 import Preview from "./preview";
 import Content from "./content";
-import DashboardCardSelector from "../../../model/DashboardCardSelector";
+import DashboardCard from "../../../DashboardCard";
 
 interface Props {
   isSelected: boolean;
@@ -9,14 +8,13 @@ interface Props {
 
 function CatCard({ isSelected }: Props) {
   return (
-    <DashboardElement
+    <DashboardCard.view
       title="Chats"
       type="square"
       position="middle"
       isSelected={isSelected}
-      onClick={function (): void {
-        DashboardCardSelector.set("cat");
-      }}
+      onClick={() => "cat"}
+      onCloseModal={() => "none"}
       preview={<Preview />}
       content={<Content />}
     />

@@ -1,22 +1,20 @@
-import DashboardElement from "../../../components/DashboardElement";
 import Preview from "./preview";
 import Content from "./content";
-import DashboardCardSelector from "../../../model/DashboardCardSelector";
+import DashboardCard from "../../../DashboardCard";
 
-interface Props {
+export interface Props {
   isSelected: boolean;
 }
 
-function FamilyCard({ isSelected }: Props) {
+export function FamilyCard({ isSelected }: Props) {
   return (
-    <DashboardElement
+    <DashboardCard.view
       title="Familles"
       type="square"
       position="left"
       isSelected={isSelected}
-      onClick={function (): void {
-        DashboardCardSelector.set("family");
-      }}
+      onClick={() => "family"}
+      onCloseModal={() => "none"}
       preview={<Preview />}
       content={<Content />}
     />

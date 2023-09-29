@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
 
-function DashboardCardSelectorFactory() {
+function DashboardCardModelFactory() {
   let value = new Subject<string>();
 
   return {
@@ -9,4 +9,4 @@ function DashboardCardSelectorFactory() {
   };
 }
 
-export default DashboardCardSelectorFactory();
+export default DashboardCardModelFactory;

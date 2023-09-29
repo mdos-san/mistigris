@@ -1,16 +1,18 @@
-import Close from "./Close";
+import DashboardCard from ".";
+import Close from "../view/components/Close";
 
 interface DashboardElementProps {
+  content: JSX.Element;
+  isSelected: boolean;
+  onClick: () => string;
+  onCloseModal: () => string;
+  position: "left" | "middle" | "right" | "bottom";
+  preview: JSX.Element;
   title: string;
   type: "square" | "row";
-  position: "left" | "middle" | "right" | "bottom";
-  isSelected: boolean;
-  onClick: () => void;
-  preview: JSX.Element;
-  content: JSX.Element;
 }
 
-function DashboardElement({
+function DashboardCardView({
   isSelected,
   type,
   title,
@@ -18,6 +20,7 @@ function DashboardElement({
   position,
   preview,
   content,
+  onCloseModal,
 }: DashboardElementProps) {
   const className = `dashboard__element dashboard__element--type-${type} dashboard__element--position-${position} ${
     isSelected
@@ -26,9 +29,20 @@ function DashboardElement({
   }`;
 
   return (
-    <div className={className} onClick={onClick}>
+    <div
+      className={className}
+      onClick={() => {
+        const newValue = onClick();
+        DashboardCard.model.set(newValue);
+      }}
+    >
       <h2 className="dashboard__element__title">{title}</h2>
-      <Close />
+      <Close
+        onClose={() => {
+          const newValue = onCloseModal();
+          DashboardCard.model.set(newValue);
+        }}
+      />
       <div
         className={`dashboard__element__preview ${
           isSelected ? "transition-delay--0" : ""
@@ -47,4 +61,4 @@ function DashboardElement({
   );
 }
 
-export default DashboardElement;
+export default DashboardCardView;

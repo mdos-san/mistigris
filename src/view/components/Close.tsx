@@ -1,13 +1,16 @@
 import { X } from "react-feather";
-import DashboardCardSelector from "../model/DashboardCardSelector";
 
-function Close() {
+interface Props {
+  onClose: () => void;
+}
+
+function Close({ onClose }: Props) {
   return (
     <span
       className="close"
       onClick={(e) => {
         e.stopPropagation();
-        DashboardCardSelector.set("none");
+        onClose();
       }}
     >
       <X />
