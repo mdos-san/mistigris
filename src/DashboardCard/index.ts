@@ -1,9 +1,4 @@
-import DashboardCardView from "./view";
-import DashboardCardModelFactory from "./model";
+import DashboardCardViewFactory from "./view";
+import DashboardCardViewModelFactory from "./view-model";
 
-const DashboardCard = {
-  view: DashboardCardView,
-  model: DashboardCardModelFactory(),
-};
-
-export default DashboardCard;
+export default DashboardCardViewFactory(DashboardCardViewModelFactory());

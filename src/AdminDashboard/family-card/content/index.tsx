@@ -1,3 +1,5 @@
+import { Edit, PlusCircle, Trash } from "react-feather";
+
 function Content() {
   return (
     <div className="family-card__content">
@@ -20,25 +22,37 @@ function Content() {
                 <td>Pauline</td>
                 <td>2</td>
                 <td>Chatons</td>
-                <td>Editer/Supprimer</td>
+                <td>
+                  <Edit />
+                  <Trash />
+                </td>
               </tr>
               <tr>
                 <td>Celine</td>
                 <td>2</td>
                 <td>Chatons</td>
-                <td>Editer/Supprimer</td>
+                <td>
+                  <Edit />
+                  <Trash />
+                </td>
               </tr>
               <tr>
                 <td>Flo</td>
                 <td>2</td>
                 <td>Chatons</td>
-                <td>Editer/Supprimer</td>
+                <td>
+                  <Edit />
+                  <Trash />
+                </td>
               </tr>
               <tr>
                 <td>Raph</td>
                 <td>2</td>
                 <td>Chatons</td>
-                <td>Editer/Supprimer</td>
+                <td>
+                  <Edit />
+                  <Trash />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -46,7 +60,10 @@ function Content() {
       </div>
       <div className="spacer--vertical"></div>
       <div className="actions">
-        <div className="action">Ajouter une famille</div>
+        <div className="action">
+          <p>Ajouter une famille</p>
+          <PlusCircle />
+        </div>
       </div>
     </div>
   );

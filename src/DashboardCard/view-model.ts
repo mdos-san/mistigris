@@ -1,12 +1,15 @@
 import { Subject } from "rxjs";
+import { PossibleCardSelection } from "../logic/CardSelector";
+import Logic from "../logic";
 
-function DashboardCardModelFactory() {
-  let value = new Subject<string>();
+export interface DashboardCardViewModel {
+  cardSelectorSubject: Subject<PossibleCardSelection>;
+}
 
+function DashboardCardViewModelFactory(): DashboardCardViewModel {
   return {
-    set: (newValue: string) => value.next(newValue),
-    get: () => value,
+    cardSelectorSubject: Logic.CardSelector.subject,
   };
 }
 
-export default DashboardCardModelFactory;
+export default DashboardCardViewModelFactory;

@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WelcomePage from "./view/welcome";
-import AdminDashboardPage from "./view/admin-dashboard";
 import FamilyDashboardPage from "./view/family-dashboard";
 import ForbiddenPage from "./view/forbidden";
+import AdminDashboard from "./AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminDashboardPage />,
+    element: <AdminDashboard />,
   },
   {
     path: "/family",
@@ -24,11 +24,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

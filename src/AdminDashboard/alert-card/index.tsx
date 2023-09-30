@@ -1,19 +1,19 @@
 import Preview from "./preview";
 import Content from "./content";
-import DashboardCard from "../../../DashboardCard";
+import DashboardCard from "../../DashboardCard";
 
-export interface Props {
+interface Props {
   isSelected: boolean;
 }
 
-export function FamilyCard({ isSelected }: Props) {
+function AlertCard({ isSelected }: Props) {
   return (
-    <DashboardCard.view
-      title="Familles"
+    <DashboardCard
+      title="Alertes"
       type="square"
-      position="left"
+      position="right"
       isSelected={isSelected}
-      onClick={() => "family"}
+      onClick={() => "alert"}
       onCloseModal={() => "none"}
       preview={<Preview />}
       content={<Content />}
@@ -21,4 +21,4 @@ export function FamilyCard({ isSelected }: Props) {
   );
 }
 
-export default FamilyCard;
+export default AlertCard;
