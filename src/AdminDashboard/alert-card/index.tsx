@@ -1,6 +1,6 @@
 import Preview from "./preview";
 import Content from "./content";
-import DashboardCard from "../../DashboardCard";
+import DashboardCard from "../../Components/DashboardCard";
 
 interface Props {
   isSelected: boolean;

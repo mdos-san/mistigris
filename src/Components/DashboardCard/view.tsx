@@ -1,6 +1,6 @@
-import Close from "../view/components/Close";
+import { PossibleCardSelection } from "../../logic/CardSelector";
+import Close from "../Close";
 import { DashboardCardViewModel } from "./view-model";
-import { PossibleCardSelection } from "../logic/CardSelector";
 
 interface DashboardElementProps {
   content: JSX.Element;
