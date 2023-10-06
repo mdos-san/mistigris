@@ -1,20 +1,45 @@
-import { firebaseConfig } from "./dev.config";
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import {
+  GoogleAuthProvider,
+  connectAuthEmulator,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+
+const config = {
+  apiKey: "AIzaSyAaATwb10zLW_Mz9l7mrgzEig0rfNSe7FE",
+  authDomain: "mistiboard-test.firebaseapp.com",
+  projectId: "mistiboard-test",
+  storageBucket: "mistiboard-test.appspot.com",
+  messagingSenderId: "811459782636",
+  appId: "1:811459782636:web:3f0826446eafa4b85702c9",
+  measurementId: "G-MDY71D83SW",
+};
 
 const firebaseServiceFactory = () => {
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
+  const app = initializeApp(config);
+  const auth = getAuth(app);
+  const firestore = getFirestore(app);
   const analytics = getAnalytics(app);
+
+  if (location.hostname === "localhost") {
+    connectAuthEmulator(auth, "http://127.0.0.1:9099");
+    connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
+  }
+
   const provider = new GoogleAuthProvider();
 
   function googleAuth() {
     signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log({ result });
+      .then(async (result) => {
+        const { claims } = await result.user.getIdTokenResult();
+        if (claims.role === "admin") {
+          window.location.href = "/admin";
+        } else {
+          window.location.href = "/forbidden";
+        }
       })
       .catch((error) => {
         console.log({ error });
@@ -22,7 +47,6 @@ const firebaseServiceFactory = () => {
   }
 
   return {
-    app,
     analytics,
     provider,
     googleAuth,
