@@ -35,7 +35,8 @@ const firebaseServiceFactory = () => {
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const { claims } = await result.user.getIdTokenResult();
-        if (claims.role === "admin") {
+        console.log("CLAIMS", claims);
+        if (claims.isAdmin) {
           window.location.href = "/admin";
         } else {
           window.location.href = "/forbidden";
