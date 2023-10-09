@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
-import { PossibleCardSelection } from "../logic/CardSelector";
-import Logic from "../logic";
+import Models from "../Models";
+import { PossibleCardSelection } from "../Models/CardSelector";
 
 export interface DashboardCardViewModel {
   cardSelectorSubject: Subject<PossibleCardSelection>;
@@ -8,7 +8,7 @@ export interface DashboardCardViewModel {
 
 function DashboardCardViewModelFactory(): DashboardCardViewModel {
   return {
-    cardSelectorSubject: Logic.CardSelector.subject,
+    cardSelectorSubject: Models.CardSelector.subject,
   };
 }
 

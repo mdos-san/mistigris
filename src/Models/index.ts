@@ -1,6 +1,6 @@
 import CardSelectorFactory from "./CardSelector";
 
-function LogicFactory() {
+function ModelsFactory() {
   const CardSelector = CardSelectorFactory();
 
   return {
@@ -8,6 +8,6 @@ function LogicFactory() {
   };
 }
 
-const Logic = LogicFactory();
+const Models = ModelsFactory();
 
-export default Logic;
+export default Models;

@@ -1,8 +1,8 @@
-import FamilyDashboardPage from "./FamilyDashboard";
-import ForbiddenPage from "./ForbidenPage";
-import WelcomePage from "./WelcomePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import AdminDashboard from "./AdminDashboard";
+import WelcomePage from "./Views/WelcomePage";
+import AdminDashboard from "./Views/AdminDashboard";
+import FamilyDashboardPage from "./Views/FamilyDashboard";
+import ForbiddenPage from "./Views/ForbidenPage";
 
 const router = createBrowserRouter([
   {

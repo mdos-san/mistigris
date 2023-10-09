@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { PossibleCardSelection } from "../../logic/CardSelector";
 import Close from "../Close";
-import { ViewModelContext } from "../../ViewModel/ViewModelContext";
+import { PossibleCardSelection } from "../../../Models/CardSelector";
+import { ViewModelContext } from "../../../ViewModels/ViewModelContext";
 
 interface DashboardElementProps {
   content: JSX.Element;
