@@ -1,10 +1,13 @@
-import { firebaseService } from "../../firebase";
+import { useContext } from "react";
+import { ViewModelContext } from "../ViewModelContext";
 
 function WelcomePage() {
+  const { auth } = useContext(ViewModelContext);
+
   return (
     <>
       <h1>MistiBoard</h1>
-      <button onClick={() => firebaseService.googleAuth()}>Se connecter</button>
+      <button onClick={auth.SignIn}>Se connecter</button>
     </>
   );
 }

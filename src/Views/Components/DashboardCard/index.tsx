@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Close from "../Close";
 import { PossibleCardSelection } from "../../../Models/CardSelector";
-import { ViewModelContext } from "../../../ViewModels/ViewModelContext";
+import { ViewModelContext } from "../../ViewModelContext";
 
 interface DashboardElementProps {
   content: JSX.Element;

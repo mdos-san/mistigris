@@ -18,7 +18,7 @@ const config = {
   measurementId: "G-MDY71D83SW",
 };
 
-const firebaseServiceFactory = () => {
+export const FirebaseServiceFactory = () => {
   const app = initializeApp(config);
   const auth = getAuth(app);
   const firestore = getFirestore(app);
@@ -53,5 +53,3 @@ const firebaseServiceFactory = () => {
     googleAuth,
   };
 };
-
-export const firebaseService = firebaseServiceFactory();

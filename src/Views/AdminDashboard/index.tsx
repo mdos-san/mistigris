@@ -3,7 +3,7 @@ import CatCard from "./cat-card";
 import FamilyCard from "./family-card";
 import useSubject from "../hooks/useSubject";
 import { useContext } from "react";
-import { ViewModelContext } from "../../ViewModels/ViewModelContext";
+import { ViewModelContext } from "../ViewModelContext";
 
 function AdminDashboard() {
   const { dashboardCard } = useContext(ViewModelContext);
