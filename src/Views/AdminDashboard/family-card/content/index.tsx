@@ -1,4 +1,5 @@
 import { Edit, PlusCircle, Trash } from "react-feather";
+import Modal from "../../../Components/Modal";
 
 function Content() {
   return (
@@ -60,6 +61,10 @@ function Content() {
       </div>
       <div className="spacer--vertical"></div>
       <div className="actions">
+        <Modal>
+          <input placeholder="Nom" />
+          <button>Créer</button>
+        </Modal>
         <div className="action">
           <p>Ajouter une famille</p>
           <PlusCircle />
