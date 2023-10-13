@@ -1,12 +1,13 @@
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
+import { v4 } from "uuid";
 import {
   GoogleAuthProvider,
   connectAuthEmulator,
   getAuth,
   signInWithPopup,
 } from "firebase/auth";
-import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+import { connectFirestoreEmulator, doc, getFirestore, setDoc } from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyAaATwb10zLW_Mz9l7mrgzEig0rfNSe7FE",
@@ -47,9 +48,20 @@ export const FirebaseServiceFactory = () => {
       });
   }
 
+  function saveToFirestore(collection: string, id: string | null, document: any) {
+    if (id === null) {
+      id = v4();
+    }
+
+    const ref = doc(firestore, collection, id);
+
+    setDoc(ref, document)
+  }
+
   return {
     analytics,
     provider,
     googleAuth,
+    saveToFirestore,
   };
 };
