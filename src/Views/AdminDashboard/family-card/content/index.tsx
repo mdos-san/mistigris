@@ -1,7 +1,12 @@
 import { Edit, PlusCircle, Trash } from "react-feather";
 import Modal from "../../../Components/Modal";
+import { useContext, useState } from "react";
+import { ViewModelContext } from "../../../ViewModelContext";
 
 function Content() {
+  const { family } = useContext(ViewModelContext);
+  const [name, setName] = useState("");
+
   return (
     <div className="family-card__content">
       <div className="family-card__content__left">
@@ -62,8 +67,18 @@ function Content() {
       <div className="spacer--vertical"></div>
       <div className="actions">
         <Modal>
-          <input placeholder="Nom" />
-          <button>Créer</button>
+          <input
+            placeholder="Nom"
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
+          />
+          <button
+            onClick={() => {
+              family.CreateFamily({ name });
+            }}
+          >
+            Créer
+          </button>
         </Modal>
         <div className="action">
           <p>Ajouter une famille</p>
