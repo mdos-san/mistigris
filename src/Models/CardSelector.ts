@@ -3,7 +3,7 @@ import { Subject } from "rxjs";
 export type PossibleCardSelection = "none" | "family" | "cat" | "alert";
 
 function CardSelectorFactory() {
-  let subject = new Subject<PossibleCardSelection>();
+  const subject = new Subject<PossibleCardSelection>();
 
   return {
     subject,

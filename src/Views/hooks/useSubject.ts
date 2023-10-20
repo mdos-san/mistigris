@@ -12,7 +12,7 @@ function useSubject<T>(subject: Subject<T>, defaultValue: T) {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [subject]);
 
   return value;
 }
