@@ -2,10 +2,17 @@ import { Edit, PlusCircle, Trash } from "react-feather";
 import Modal from "../../../Components/Modal";
 import { useContext, useState } from "react";
 import { ViewModelContext } from "../../../ViewModelContext";
+import useSubject from "../../../hooks/useSubject";
+import { Family } from "../../../../Models/FamilyLogic";
 
 function Content() {
   const { family } = useContext(ViewModelContext);
   const [name, setName] = useState("");
+  const a = useSubject<Record<Family["id"], Family>>(
+    family.getFamiliesSubject(),
+    {},
+  );
+  console.log(a);
 
   return (
     <div className="family-card__content">
@@ -24,15 +31,17 @@ function Content() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Pauline</td>
-                <td>2</td>
-                <td>Chatons</td>
-                <td>
-                  <Edit />
-                  <Trash />
-                </td>
-              </tr>
+              {Object.values(a).map((family) => (
+                <tr key={family.id}>
+                  <td>{family.name}</td>
+                  <td>42</td>
+                  <td>Chatons</td>
+                  <td>
+                    <Edit />
+                    <Trash />
+                  </td>
+                </tr>
+              ))}
               <tr>
                 <td>Celine</td>
                 <td>2</td>

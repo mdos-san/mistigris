@@ -8,11 +8,16 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import {
+  collection,
   connectFirestoreEmulator,
   doc,
   getFirestore,
+  onSnapshot,
+  query,
   setDoc,
 } from "firebase/firestore";
+import { Subject } from "rxjs";
+import { Family } from "../FamilyLogic";
 
 const config = {
   apiKey: "AIzaSyAaATwb10zLW_Mz9l7mrgzEig0rfNSe7FE",
@@ -33,6 +38,36 @@ export const FirebaseServiceFactory = () => {
   if (location.hostname === "localhost") {
     connectAuthEmulator(auth, "http://127.0.0.1:9099");
     connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
+  }
+
+  let familiesRecord: Record<Family["id"], Family> = {};
+  const familiesSubject = new Subject<Record<Family["id"], Family>>();
+
+  try {
+    const c = collection(firestore, "families");
+    const q = query(c);
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          console.log("New city: ", change.doc.data());
+          const d = change.doc.data() as Family;
+          familiesRecord[d.id] = d;
+        }
+        if (change.type === "modified") {
+          console.log("Modified city: ", change.doc.data());
+          const d = change.doc.data() as Family;
+          familiesRecord[d.id] = d;
+        }
+        if (change.type === "removed") {
+          console.log("Removed city: ", change.doc.data());
+          const d = change.doc.data() as Family;
+          delete familiesRecord[d.id];
+        }
+        familiesSubject.next({ ...familiesRecord });
+      });
+    });
+  } catch (e) {
+    console.error("Can't init families subject");
   }
 
   const provider = new GoogleAuthProvider();
@@ -64,7 +99,11 @@ export const FirebaseServiceFactory = () => {
 
     const ref = doc(firestore, collection, id);
 
-    setDoc(ref, document);
+    setDoc(ref, { ...document, id });
+  }
+
+  function getFamiliesSubject() {
+    return familiesSubject;
   }
 
   return {
@@ -72,5 +111,6 @@ export const FirebaseServiceFactory = () => {
     provider,
     googleAuth,
     saveToFirestore,
+    getFamiliesSubject,
   };
 };
