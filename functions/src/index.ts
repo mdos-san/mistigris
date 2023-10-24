@@ -7,7 +7,7 @@ initializeApp();
 export const registerUser = functions.region("europe-west1")
   .auth.user().onCreate((user) => {
     if (user.email === "mdossan@protonmail.com") {
-      return admin.auth().setCustomUserClaims(user.uid, {isAdmin: true});
+      admin.auth().setCustomUserClaims(user.uid, {isAdmin: true});
     }
 
     admin.firestore()
