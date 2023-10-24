@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import Close from "../Close";
 import { PossibleCardSelection } from "../../../Models/CardSelector";
-import { ViewModelContext } from "../../ViewModelContext";
 
 interface DashboardElementProps {
   content: JSX.Element;
@@ -24,7 +22,6 @@ function DashboardCard({
   content,
   onCloseModal,
 }: DashboardElementProps) {
-  const { dashboardCard } = useContext(ViewModelContext);
   const className = `dashboard__element dashboard__element--type-${type} dashboard__element--position-${position} ${
     isSelected
       ? "dashboard__element--selected"
@@ -36,14 +33,14 @@ function DashboardCard({
       className={className}
       onClick={() => {
         const newValue = onClick();
-        dashboardCard.cardSelectorSubject.next(newValue);
+        // TODO
       }}
     >
       <h2 className="dashboard__element__title">{title}</h2>
       <Close
         onClose={() => {
           const newValue = onCloseModal();
-          dashboardCard.cardSelectorSubject.next(newValue);
+          // TODO
         }}
       />
       <div

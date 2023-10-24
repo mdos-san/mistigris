@@ -1,50 +1,18 @@
-import { getAnalytics } from "firebase/analytics";
-import { initializeApp } from "firebase/app";
-import { v4 } from "uuid";
-import {
-  GoogleAuthProvider,
-  connectAuthEmulator,
-  getAuth,
-  signInWithPopup,
-} from "firebase/auth";
-import {
-  collection,
-  connectFirestoreEmulator,
-  doc,
-  getFirestore,
-  onSnapshot,
-  query,
-  setDoc,
-} from "firebase/firestore";
-import { Subject } from "rxjs";
-import { MistiBoardCollections, MistiBoardDatabase } from "../../core/database";
 import { Family, FamilyRecord, FamilyRecordSubject } from "../../core/family";
+import { FirebaseProvider } from "../../firebase";
+import { MistiBoardCollections, MistiBoardDatabase } from "../../core/database";
+import { Subject } from "rxjs";
+import { collection, doc, onSnapshot, query, setDoc } from "firebase/firestore";
+import { v4 } from "uuid";
 
-const config = {
-  apiKey: "AIzaSyAaATwb10zLW_Mz9l7mrgzEig0rfNSe7FE",
-  authDomain: "mistiboard-test.firebaseapp.com",
-  projectId: "mistiboard-test",
-  storageBucket: "mistiboard-test.appspot.com",
-  messagingSenderId: "811459782636",
-  appId: "1:811459782636:web:3f0826446eafa4b85702c9",
-  measurementId: "G-MDY71D83SW",
-};
-
-export const MistiBoardDatabaseFirebaseFactory = (): MistiBoardDatabase => {
-  const app = initializeApp(config);
-  const auth = getAuth(app);
-  const firestore = getFirestore(app);
-
-  if (location.hostname === "localhost") {
-    connectAuthEmulator(auth, "http://127.0.0.1:9099");
-    connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
-  }
-
+export const MistiBoardDatabaseFirebaseFactory = (
+  firebaseProvider: FirebaseProvider,
+): MistiBoardDatabase => {
   let familiesRecord: FamilyRecord = {};
   const familiesSubject: FamilyRecordSubject = new Subject();
 
   try {
-    const c = collection(firestore, "families");
+    const c = collection(firebaseProvider.firestore, "families");
     const q = query(c);
     const unsubscribe = onSnapshot(q, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
@@ -79,7 +47,7 @@ export const MistiBoardDatabaseFirebaseFactory = (): MistiBoardDatabase => {
       id = v4();
     }
 
-    const ref = doc(firestore, collection, id);
+    const ref = doc(firebaseProvider.firestore, collection, id);
 
     setDoc(ref, { ...document, id });
   }

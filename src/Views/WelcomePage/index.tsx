@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { ViewModelContext } from "../ViewModelContext";
+import { MistiBoardCoreContext } from "../MistiBoardCoreContext";
 
 function WelcomePage() {
-  const { auth } = useContext(ViewModelContext);
+  const { auth } = useContext(MistiBoardCoreContext);
 
   return (
     <>
       <h1>MistiBoard</h1>
-      <button onClick={auth.SignIn}>Se connecter</button>
+      <button onClick={auth.initiateAuth}>Se connecter</button>
     </>
   );
 }

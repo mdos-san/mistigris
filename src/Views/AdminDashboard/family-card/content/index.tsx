@@ -1,18 +1,18 @@
-import { Edit, PlusCircle, Trash } from "react-feather";
 import Modal from "../../../Components/Modal";
-import { useContext, useState } from "react";
-import { ViewModelContext } from "../../../ViewModelContext";
 import useSubject from "../../../hooks/useSubject";
-import { Family } from "../../../../Models/FamilyLogic";
+import { Edit, PlusCircle, Trash } from "react-feather";
+import { FamilyRecord } from "../../../../core/family";
+import { MistiBoardCoreContext } from "../../../MistiBoardCoreContext";
+import { useContext, useState } from "react";
 
 function Content() {
-  const { family } = useContext(ViewModelContext);
+  const { family } = useContext(MistiBoardCoreContext);
   const [name, setName] = useState("");
-  const a = useSubject<Record<Family["id"], Family>>(
-    family.getFamiliesSubject(),
+  const familyRecord = useSubject<FamilyRecord>(
+    family.getFamiliesRecordSubject(),
     {},
   );
-  console.log(a);
+  console.log(familyRecord);
 
   return (
     <div className="family-card__content">
@@ -31,7 +31,7 @@ function Content() {
               </tr>
             </thead>
             <tbody>
-              {Object.values(a).map((family) => (
+              {Object.values(familyRecord).map((family) => (
                 <tr key={family.id}>
                   <td>{family.name}</td>
                   <td>42</td>
